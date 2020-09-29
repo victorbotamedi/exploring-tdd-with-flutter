@@ -1,4 +1,5 @@
 import 'package:flutter_tdd/cubit/notes_cubit.dart';
+import 'package:flutter_tdd/model/note.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
