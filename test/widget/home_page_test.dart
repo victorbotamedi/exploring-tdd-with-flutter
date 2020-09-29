@@ -61,5 +61,20 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(NotePage), findsOneWidget);
     });
+
+    testWidgets('navigate to note page in edit mode',
+        (WidgetTester tester) async {
+      var notesCubit = NotesCubit();
+      await _pumpTestWidget(tester, notesCubit);
+      var expectedTitle = 'note title';
+      var expectedBody = 'note body';
+      notesCubit.createNote(expectedTitle, expectedBody);
+      await tester.pump();
+      await tester.tap(find.byType(ListTile));
+      await tester.pumpAndSettle();
+      expect(find.byType(NotePage), findsOneWidget);
+      expect(find.text(expectedTitle), findsOneWidget);
+      expect(find.text(expectedBody), findsOneWidget);
+    });
   });
 }
