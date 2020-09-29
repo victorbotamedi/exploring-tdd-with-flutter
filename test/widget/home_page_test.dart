@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tdd/cubit/notes_cubit.dart';
 import 'package:flutter_tdd/home_page.dart';
+import 'package:flutter_tdd/note_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

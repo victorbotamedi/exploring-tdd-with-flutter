@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tdd/cubit/notes_cubit.dart';
 import 'package:flutter_tdd/cubit/states.dart';
+import 'package:flutter_tdd/note_page.dart';
 
 class HomePage extends StatelessWidget {
   final NotesCubit notesCubit;
@@ -28,7 +29,14 @@ class HomePage extends StatelessWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NotePage(
+                notesCubit: notesCubit,
+              ),
+            ),
+          ),
           tooltip: 'Add',
           child: Icon(Icons.add),
         ),
