@@ -29,16 +29,18 @@ class HomePage extends StatelessWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => NotePage(
-                notesCubit: notesCubit,
-              ),
-            ),
-          ),
+          onPressed: () => _navigateToNotePage(context),
           tooltip: 'Add',
           child: Icon(Icons.add),
+        ),
+      );
+
+  _navigateToNotePage(BuildContext context) => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => NotePage(
+            notesCubit: notesCubit,
+          ),
         ),
       );
 }
