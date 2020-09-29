@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tdd/cubit/notes_cubit.dart';
+import 'package:flutter_tdd/model/note.dart';
 
 class NotePage extends StatefulWidget {
   final NotesCubit notesCubit;
+  final Note note;
 
-  const NotePage({Key key, this.notesCubit}) : super(key: key);
+  const NotePage({Key key, this.notesCubit, this.note}) : super(key: key);
 
   @override
   _NotePageState createState() => _NotePageState();
@@ -13,6 +15,14 @@ class NotePage extends StatefulWidget {
 class _NotePageState extends State<NotePage> {
   final _titleController = TextEditingController();
   final _bodyController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.note == null) return;
+    _titleController.text = widget.note.title;
+    _bodyController.text = widget.note.body;
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -47,7 +57,12 @@ class _NotePageState extends State<NotePage> {
       );
 
   _finishEditing() {
-    widget.notesCubit.createNote(_titleController.text, _bodyController.text);
+    if (widget.note != null) {
+      widget.notesCubit.updateNote(
+          widget.note.id, _titleController.text, _bodyController.text);
+    } else {
+      widget.notesCubit.createNote(_titleController.text, _bodyController.text);
+    }
     Navigator.pop(context);
   }
 
