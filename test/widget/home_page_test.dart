@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tdd/cubit/notes_cubit.dart';
-import 'package:flutter_tdd/main.dart';
+import 'package:flutter_tdd/home_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Home Page', () {
     _pumpTestWidget(WidgetTester tester, NotesCubit cubit) => tester.pumpWidget(
           MaterialApp(
-            home: MyHomePage(
+            home: HomePage(
               title: 'Home',
               notesCubit: cubit,
             ),
